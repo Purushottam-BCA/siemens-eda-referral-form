@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siemens EDA Referrals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            background-color: #009999;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #009983;
+            margin-top: 0;
+        }
+        .steps {
+            margin-bottom: 20px;
+        }
+        .step {
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0077B5;
+            color: #fff;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .button:hover {
+            background-color: #005983;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .footer a {
+            color: #0077B5;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Siemens EDA Referrals</h1>
+        
+        <div class="steps">
+            <div class="step">
+                <strong>Step 1:</strong> Go to Career Page: 
+                <a href="https://myjob.io/cewDyQb" target="_blank" class="button">Siemens EDA Careers</a>
+            </div>
+            <div class="step">
+                <strong>Step 2:</strong> Find a role that fits you.
+            </div>
+            <div class="step">
+                <strong>Step 3:</strong> Fill out the form below and click "Send Email" to submit your referral request.
+            </div>
+        </div>
+
+        <form id="referralForm">
+            <div class="form-group">
+                <label for="jobId">Job ID:</label>
+                <input type="text" id="jobId" name="jobId" required>
+            </div>
+            <div class="form-group">
+                <label for="jobUrl">Job URL:</label>
+                <input type="url" id="jobUrl" name="jobUrl" required>
+            </div>
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="education">College & Degree:</label>
+                <input type="text" id="education" name="education" required>
+            </div>
+            <div class="form-group">
+                <label for="graduationYear">Graduation Year:</label>
+                <input type="number" id="graduationYear" name="graduationYear" min="1900" max="2099" step="1" required>
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn Profile URL:</label>
+                <input type="url" id="linkedin" name="linkedin" required>
+            </div>
+            <div class="form-group">
+                <label for="resume">Resume (PDF only):</label>
+                <input type="file" id="resume" name="resume" accept=".pdf" required>
+            </div>
+            <button type="submit" class="button">Send Email</button>
+        </form>
+
+        <div class="footer">
+            <p>Feel free to connect or message me on <a href="https://www.linkedin.com/in/puruma82" target="_blank">LinkedIn</a>!</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('referralForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const subject = encodeURIComponent('[Referral] - Siemens EDA - ' + document.getElementById('fullName').value);
+            const body = encodeURIComponent(
+                'Job ID: ' + document.getElementById('jobId').value + '\n' +
+                'Job URL: ' + document.getElementById('jobUrl').value + '\n' +
+                'Full Name: ' + document.getElementById('fullName').value + '\n' +
+                'Contact: ' + document.getElementById('email').value + ' / ' + document.getElementById('mobile').value + '\n' +
+                'College & Degree: ' + document.getElementById('education').value + '\n' +
+                'Graduation Year: ' + document.getElementById('graduationYear').value + '\n' +
+                'LinkedIn Profile URL: ' + document.getElementById('linkedin').value + '\n\n' +
+                'Please find my resume attached.'
+            );
+
+            const emailAddress = document.getElementById('email').value;
+            const mailtoLink = `mailto:Purushottam.referral@gmail.com?subject=${subject}&body=${body}&from=${emailAddress}`;
+
+            // Create a temporary link to trigger the email client
+            const tempLink = document.createElement('a');
+            tempLink.href = mailtoLink;
+            tempLink.click();
+
+            // Alert the user about attaching the resume
+            alert('Please remember to attach your resume to the email before sending.');
+        });
+    </script>
+</body>
+</html>
+
